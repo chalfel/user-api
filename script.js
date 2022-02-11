@@ -17,6 +17,7 @@ async function main() {
           faker.name.findName(),
           String(Math.floor(faker.random.number({ min: 1, max: 100 }))),
         ]);
+        resolves();
       }, 100);
     });
   }

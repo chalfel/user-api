@@ -12,7 +12,7 @@ app.get("/", async (req, res) => {
   const { user, page } = query;
   const limit = 25;
   const offset = (page || 0) * 25;
-  const client = new pg.Client({ connectionString: process.env.DATABASE_URL });
+  const client = new pg.Client({ ssl: true, connectionString: process.env.DATABASE_URL });
   await client.connect();
   const { rows } = await client.query(
     "SELECT * from users where name like $1 limit $2 offset $3",
